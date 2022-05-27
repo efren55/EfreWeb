@@ -1,0 +1,344 @@
+:root{
+    --blanco:#ffffff;
+    --oscuro:#212121;
+    --primario:#ffc107;
+    --secundario:#0097a7;
+    --gris:#757575;
+    --grisclaro: #dfe9f3;
+
+}
+
+
+/*Globales*/
+html{
+    font-size: 62.5%;
+    box-sizing: border-box; /*Este box-sizing: border-box; indica que no se sumaran los bordes*/
+    scroll-snap-type: y mandatory; /*Es para dar scroll a la pagina*//*La Y corresponde al eje donde se va a desplazar la pagina*/
+}
+
+/**Scroll-Snap**/
+.servicios .navegacion-principal {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+*, *:before, *:after {  /*El selector *, indica que se seleccionara todos los elementos de html*//*Las comas en los 
+    selectores indican una separacion, a estos 2 selectores se le aplican las mismas condiciones que estan entre las llaves*/
+   /*Afeter significa despues de y before antes de. Estos son pseudoelementos*/
+    box-sizing: inherit;
+}
+
+body{
+    font-size: 16px; /*1rem=10px*/
+    font-family: 'Pontano Sans', sans-serif;
+    background-image: linear-gradient(to top,var(--grisclaro) 0%, var(--blanco) 100% );
+    /*Utilizamos backgound-image para acceder a los degradados, esto se hace con linear-gradient.
+     Si ponemos background color no podremos acceder*/
+    /*La direccion del degradado se hace con la sintaxis "to" seguido de la "direccion". to top es de arriba hacia abajo,
+    to right es de izquierda a derecha, to bottom es de arriba a abajo, to left de derecha a izquierda  */
+}
+
+.contenedor{
+    max-width:120rem; /**/
+    margin: 0 auto;
+   
+    
+}
+
+.boton{
+    font-weight: bold;
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    text-decoration: none;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+@media (max-width: 780px) {
+    .boton{
+        width: 90%;
+        text-align: center;
+    }
+    
+}
+
+.boton :hover{
+    cursor: pointer;
+}
+
+.sombra{
+    -webkit-box-shadow: 0px 5px 6px 5px #D1C5FF; 
+    box-shadow: 0px 5px 6px 5px #D1C5FF;
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+    
+}
+
+
+
+/*Tipografia*/
+h1{
+    font-size: 3.8rem;
+    font-weight: bold;
+}
+h2{
+    font-size: 2.8rem;
+    font-weight: bold;
+}
+
+h3{
+    font-size: 1.8rem;
+}
+
+h1,h2,h3{
+    text-align: center;
+}
+
+/*Titulos*/
+.titulo span{
+    font-size: 2rem; 
+    color:cornflowerblue;
+
+}
+
+/*Utilidades*/
+/*
+.w-100{
+    width: 100%;
+}
+@media (min-width: 780px) {
+    .w-100{
+        width: auto;
+    }
+}
+*/
+@media (max-width: 780px) {
+    .w-100{
+        width: 100%; /*Cuando el tamaño llegue a 780px, el boton ocupara todo el lugar*/
+        /*Mientras no se cumpla esto, el boton estara alineado a la derecha*/
+    }
+    
+}
+.flex{
+    display: flex;
+}
+.alinear-derecha{
+    justify-content: flex-end; /*Alineara el boton a la derecha*/
+
+}
+
+
+/*Navegacion principal*/
+.nav-nb{
+    background-color: var(--secundario);
+}
+
+.navegacion-principal{
+    
+    display: flex;
+    flex-direction: column;
+    /*align-items: center;---------------Se utiliza para centrar vericalmente*/
+}
+
+@media (min-width:780px) {
+    .navegacion-principal{
+        flex-direction: row;
+        justify-content:space-between; /*Se utiliza para alinear horizontalmente*/
+    }
+}
+
+/*NOTA: Es muy importante el scroll en la pagina web, verificarlo en diferentes dispositivos*/
+
+.navegacion-principal a{
+    display: block; /*Se utiliza para que los enlaces aparezcan de otro color al pasar el puntero sobre ellos*/
+    text-align: center; /*Esto va a centrar el contenido de navegacion, osea, el texto*/
+    padding: 1rem;
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.navegacion-principal a:hover{
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+
+/*Hero*/
+
+.hero{
+    margin-bottom: 2rem;
+    background-image: url(../img/hero.jpg); /*Aqui se agrega la imagen a CSS*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 45rem; /*La imagen se hace mas grande, en este caso, 45rem*/ 
+    padding: 2rem; /*El texto se recorre hacia abajo*/ /*Esto es un problema debido a que se suma los 45rem mas los 
+    2 rem de abajo y arriba, o sea, 49rem en total. Para solucionar esto se utilizan los modelos cajas*/
+    /*Modelo caja (Box Model)
+    El tamaño de lo que se muestra en pantalla esta delimitado por 4 cosas: 
+    -Tamaño de contenido
+    -Tamaño de relleno (Padding)
+    -Tamño del borde
+    -El margen*/
+    position: relative;
+}
+
+.contenido-hero{
+    position: absolute;
+    color: var(--blanco);
+    /*background-color: red;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;*/
+    background-color: rgba(0,0,0,.6);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    /*Alinear verticalmente el contenido*/
+    display: flex;
+    flex-direction: column; /*Ordena y alinea verticalmente cada elemento*/
+    align-items: center; /*Centra los elementos horizontalmente*/
+    justify-content: center; /*Centra los elementos verticalmente*/
+
+}
+/*
+.contenido-hero h2,
+.contenido-hero p{
+    
+    font-size: 3.5rem;
+}
+*/
+
+
+/* NOTA: ESTO ES PARA LA OPCION DE HACER UNA DIVISION EN HTML 
+.ubicacion{
+    display:flex;        Esto es para declarar flex
+    align-items:flex-end;  Esto es para centrar verticalmente hacia abajo
+}
+*/
+
+/*Servicios*/
+@media (min-width: 780px) {
+    .servicios{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /*Divide el cuadro en una fraccion del 100%, osea, un 33.33% para cada una*/
+        /*Tambien se le pudo haber puesto 33.3% en vez de 1fr*/
+        /*Diferentes sintaxis*/
+        /*grid-template-columns: 1fr 1fr 1fr; 
+        grid-template-columns: 33.3% 33.3% 33.3%;
+        grid-template-columns: repeat(3,1fr)*/
+        column-gap: 1rem;  /*Separacion de los contenido en las cdolumnas*/
+    }
+}
+
+
+.servicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.servicio h3{
+    color: var(--secundario);
+    font-weight: bold;
+
+}
+
+.servicio p{
+    line-height: 2; /*Sintaxis para interlineado*/
+    text-align: center;
+}
+.servicio .iconos{
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;  /*Alinea verticalmente*/
+}
+
+/*Contacto*/
+.formulario{
+    background-color: var(--gris);
+    width: min(60rem, 100%); /*Utilizar el valor mas pequeño*/ /*Si hay 488px ¿que es mas pequeño los 60rem 
+    o el 100% de la pantalla? Entonces se tomaran los 488px*/
+    margin: 0 auto; /*Centra el contenido*//*Se agrega si el padre no tiene un display flex y sea un elemento de tipo block que tome 
+    todo el espacio disponible*/
+    border-radius: 1rem;
+
+
+}
+.formulario fieldset{
+    border: none;
+
+}
+
+.formulario legend{
+    text-align: center;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 700px;
+    margin-bottom: 2rem; /*Se separa del primer input (nombre)*/
+    color:var(--primario)
+}
+
+@media (min-width: 780px) {
+    .contenedor-campos{
+        display: grid;
+        grid-template-columns: 1fr 1fr; /*Definir areas de columnas*/
+        grid-template-rows: auto auto 20rem; /*Definir las filas*/
+        column-gap: 1rem; /*Sepracion de columnas*/
+    
+    }
+}
+
+.campo:nth-child(3), /*Selecciona el tercer elemento que lleva la clase campos, en este caso el telefono*/
+.campo:nth-child(4){
+    grid-column:1/3 ; /*Posicionar un elemento*/ /*Este elemto ira de la fila 1 a la 3 (checar en la pagina la posicion)*/
+}
+
+.campo:nth-child(5){
+    grid-column: 2/3;
+}
+
+.campo textarea{
+    height: 17rem;
+}
+
+.campo{
+    margin-bottom: 1rem;
+
+}
+
+.campo label{
+    color:var(--blanco);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block; /*Cada label va a tomar su espacio disponible*/
+
+}
+
+.input-text{
+    width: 100%; /*Que ocupe todo el espacio disponible*/
+    border:none;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+/*Si se quiere seleccionar un input en especifico, se utiliza la siguiente sintaxis:
+.campo input [type"text"]
+.campo input [type"tel"]*/
+
+/*Pie de pagina*/
+.footer{ /*Una clase va a tener mas especificidad en CSS que una etiqueta*/
+    text-align: center;
+
+}
